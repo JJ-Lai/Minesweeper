@@ -1,0 +1,104 @@
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background: #f0f0f0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  
+  .game-controls {
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .difficulty-selector {
+    margin-bottom: 15px;
+    text-align: center;
+  }
+  
+  .difficulty-selector select {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .game-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #4a4a4a;
+    padding: 10px;
+    border-radius: 5px;
+    color: #fff;
+  }
+  
+  .restart-btn {
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px 15px;
+    border-radius: 5px;
+    transition: transform 0.2s;
+  }
+  
+  .restart-btn:hover {
+    transform: scale(1.1);
+  }
+  
+  .game-board {
+    background: #7b7b7b;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  }
+  
+  .row {
+    display: flex;
+  }
+  
+  .cell {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #999;
+    background: #bdbdbd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+  }
+  
+  .cell:hover:not(.revealed) {
+    background: #a8a8a8;
+  }
+  
+  .cell.revealed {
+    background: #e0e0e0;
+  }
+  
+  .cell.mine {
+    background: #ff5252;
+  }
+  
+  .cell.flagged {
+    background: #bdbdbd;
+  }
+  
+  /* 數字顏色 */
+  .number-1 { color: blue; }
+  .number-2 { color: green; }
+  .number-3 { color: red; }
+  .number-4 { color: darkblue; }
+  .number-5 { color: darkred; }
+  .number-6 { color: teal; }
+  .number-7 { color: black; }
+  .number-8 { color: gray; }
+  
+  .game-over .cell {
+    pointer-events: none;
+  }

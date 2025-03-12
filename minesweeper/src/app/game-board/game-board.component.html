@@ -1,0 +1,41 @@
+<div class="game-container">
+    <div class="game-controls">
+      <div class="difficulty-selector">
+        <label>難度：</label>
+        <select [(ngModel)]="difficulty" (change)="changeDifficulty(difficulty)">
+          <option *ngFor="let diff of difficulties" [value]="diff">
+            {{diff}}
+          </option>
+        </select>
+      </div>
+      
+      <div class="game-info">
+        <div class="mines-counter">剩餘地雷: {{remainingMines}}</div>
+        <button class="restart-btn" (click)="startNewGame()">
+          {{ gameOver ? '😵' : gameWon ? '😎' : '🙂' }}
+        </button>
+        <div class="timer">時間: {{timer}}秒</div>
+      </div>
+    </div>
+  
+    <div class="game-board" [class.game-over]="gameOver">
+      <div class="row" *ngFor="let row of board">
+        <div class="cell" 
+             *ngFor="let cell of row"
+             (click)="onCellClick(cell)"
+             (contextmenu)="onRightClick($event, cell)"
+             [class.revealed]="cell.isRevealed"
+             [class.mine]="cell.isMine && cell.isRevealed"
+             [class.flagged]="cell.isFlagged">
+          <ng-container *ngIf="cell.isRevealed">
+            <span *ngIf="!cell.isMine && cell.neighborMines > 0"
+                  [class]="'number-' + cell.neighborMines">
+              {{cell.neighborMines}}
+            </span>
+            <span *ngIf="cell.isMine">💣</span>
+          </ng-container>
+          <span *ngIf="cell.isFlagged && !cell.isRevealed">🚩</span>
+        </div>
+      </div>
+    </div>
+  </div>
